@@ -18,7 +18,7 @@ def dataset_menu():
             ds.average_carat_price()
             quit_or_stay()
         elif choice == "3":
-            ds.max_min_price
+            ds.max_min_price()
             quit_or_stay()
         elif choice == "4":
             print("Aurevoir et bonne journée !")
