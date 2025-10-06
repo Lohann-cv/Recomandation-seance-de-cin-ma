@@ -5,7 +5,7 @@ df = df[["carat", "cut", "color", "clarity", "price"]]
 
 
 def shape_info():
-    print(f"La shape du dataset utilisée est : {df.shape()}")
+    print(f"La shape du dataset utilisée est : {df.shape}")
 
 
 def average_carat_price():
