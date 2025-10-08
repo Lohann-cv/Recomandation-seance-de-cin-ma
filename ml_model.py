@@ -16,7 +16,8 @@ diamonds['color'] = diamonds["color"].replace(
     {"D": 1, "E": 2, "F": 3, "G": 4, "H": 5, "I": 6, "J": 7}
 )
 diamonds['clarity'] = diamonds["clarity"].replace(
-    {"VVS2": 1, "VS1": 2, "VS2": 3, "Sl1": 4, "Sl2": 5}
+    {"IF": 1, "VVS1": 2, "VVS2": 3, "VS1": 4, "VS2": 5,
+     "SI1": 6, "SI2": 7, "I1": 8}
 )
 
 
@@ -31,13 +32,13 @@ print("Test score:", model.score(X_test, y_test))
 
 
 def prediction():
-    user_carat = input("Veuillez saisir le carat : ")
-    user_cut = input(
-        "Veuillez saisir le cut de votre diamand,\n1-Ideal, 2-Premium, 3-Very Good, 4-Good, 5-Fair : ")
-    user_color = input(
-        "Veuillez saisir la color de votre diamand,\n1-D, 2-E, 3-F, 4-G, 5-H, 6-I, 7-J : ")
-    user_clarity = input(
-        "Veuillez saisir la clarity de votre diamand,\n1-VVS2, 2-VS1, 3-VS2, 4-Sl1, 5-Sl2 : ")
+    user_carat = float(input("Veuillez saisir le carat : "))
+    user_cut = int(input(
+        "Veuillez saisir le cut de votre diamand,\n1-Ideal, 2-Premium, 3-Very Good, 4-Good, 5-Fair : "))
+    user_color = int(input(
+        "Veuillez saisir la color de votre diamand,\n1-D, 2-E, 3-F, 4-G, 5-H, 6-I, 7-J : "))
+    user_clarity = int(input(
+        "Veuillez saisir la clarity de votre diamand,\n1-IF, 2-VVS1, 3-VVS2, 4-VS1, 5-VS2, 6-Sl1, 7-Sl2, 8-I1 : "))
     user_diamond = pd.DataFrame([[user_carat, user_cut, user_color, user_clarity]], columns=[
                                 "carat", "cut", "color", "clarity"])
     print(model.predict(user_diamond))
