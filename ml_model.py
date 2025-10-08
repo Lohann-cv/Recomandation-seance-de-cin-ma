@@ -28,3 +28,16 @@ model = KNeighborsClassifier(n_neighbors=1)
 model.fit(X_train, y_train)
 print("Train score:", model.score(X_train, y_train))
 print("Test score:", model.score(X_test, y_test))
+
+
+def prediction():
+    user_carat = input("Veuillez saisir le carat : ")
+    user_cut = input(
+        "Veuillez saisir le cut de votre diamand,\n1-Ideal, 2-Premium, 3-Very Good, 4-Good, 5-Fair : ")
+    user_color = input(
+        "Veuillez saisir la color de votre diamand,\n1-D, 2-E, 3-F, 4-G, 5-H, 6-I, 7-J : ")
+    user_clarity = input(
+        "Veuillez saisir la clarity de votre diamand,\n1-VVS2, 2-VS1, 3-VS2, 4-Sl1, 5-Sl2 : ")
+    user_diamond = pd.DataFrame([[user_carat, user_cut, user_color, user_clarity]], columns=[
+                                "carat", "cut", "color", "clarity"])
+    print(model.predict(user_diamond))
