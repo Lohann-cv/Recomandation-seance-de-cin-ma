@@ -1,5 +1,6 @@
 import dataset as ds
 import sys
+import ml_model
 
 
 def quit_or_stay():
@@ -29,7 +30,9 @@ def dataset_menu():
 
 
 def ml_main():
-    print("traveau")
+    print("Nous allons vous demander de rentrer les diverses information de votre diamand pour pouvoir déduire son prix,merci de rentrer les valeurs numerique associer")
+    ml_model.prediction()
+    quit_or_stay()
 
 
 def menu():
