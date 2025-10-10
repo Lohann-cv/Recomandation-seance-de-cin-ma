@@ -4,52 +4,74 @@ import ml_model
 
 
 def quit_or_stay():
-    sys.exit() if input("1=continuer, 2=quiter le programe : ") == "2" else None
+    try:
+        choice = input("1 = Continuer | 2 = Quitter le programme : ")
+        if choice == "2":
+            print("Programme terminé. À bientôt !")
+            sys.exit()
+        elif choice != "1":
+            print("Entrée invalide. Retour au menu.")
+    except Exception as e:
+        print(f"Erreur : {e}")
 
 
 def dataset_menu():
     while True:
-        print("===Menu information dataset===\n1- Shape du dataset\n2- Moyenne du dataset\n3- Maximum et minimum des diamands du dataset\n4- Quitter")
-        choice = input(
-            "Veuillez rentrer la valeur numérique de votre option choisie : ")
-        if choice == "1":
-            ds.shape_info()
-            quit_or_stay()
-        elif choice == "2":
-            ds.average_carat_price()
-            quit_or_stay()
-        elif choice == "3":
-            ds.max_min_price()
-            quit_or_stay()
-        elif choice == "4":
-            print("Aurevoir et bonne journée !")
-            break
-        else:
-            print("Veuillez rentrer 1, 2, 3 ou 4 selon votre option choisie !")
-            return
+        print("\n=== Menu Information Dataset ===")
+        print("1 - Shape du dataset")
+        print("2 - Moyenne du dataset")
+        print("3 - Maximum et minimum des diamants du dataset")
+        print("4 - Retour au menu principal")
+
+        choice = input("Veuillez entrer le numéro de votre choix : ")
+        try:
+            if choice == "1":
+                ds.shape_info()
+                quit_or_stay()
+            elif choice == "2":
+                ds.average_carat_price()
+                quit_or_stay()
+            elif choice == "3":
+                ds.max_min_price()
+                quit_or_stay()
+            elif choice == "4":
+                break
+            else:
+                print("Veuillez entrer un chiffre entre 1 et 4.")
+        except Exception as e:
+            print(f"Une erreur est survenue : {e}")
 
 
 def ml_main():
-    print("Nous allons vous demander de rentrer les diverses information de votre diamand pour pouvoir déduire son prix,merci de rentrer les valeurs numerique associer")
-    ml_model.prediction()
+    print("\n=== Estimation du prix d'un diamant ===")
+    print("Veuillez entrer les caractéristiques numériques de votre diamant.")
+    try:
+        ml_model.prediction()
+    except Exception as e:
+        print(f"Erreur lors de la prédiction : {e}")
     quit_or_stay()
 
 
 def menu():
     while True:
-        print("Bonjour, choisisez ce que vous voulez faire aujourd'hui :\n1- Recherche du prix d'un diamand en fonction de ces carateristique\n2- Information relative à notre dataset\n3- Quiter")
-        choice = input(
-            "Veuillez rentrer la valeur numérique de votre option choisie : ")
-        if choice == "1":
-            ml_main()
-        elif choice == "2":
-            dataset_menu()
-        elif choice == "3":
-            print("Aurevoir et bonne journée !")
-            break
-        else:
-            print("Veuillez rentrer 1, 2 ou 3 selon votre option choisie !")
-            return
+        print("\n=== Menu Principal ===")
+        print("1 - Estimer le prix d'un diamant")
+        print("2 - Informations sur le dataset")
+        print("3 - Quitter")
+
+        choice = input("Veuillez entrer le numéro de votre choix : ")
+        try:
+            if choice == "1":
+                ml_main()
+            elif choice == "2":
+                dataset_menu()
+            elif choice == "3":
+                print("Merci et à bientôt !")
+                break
+            else:
+                print("Veuillez entrer 1, 2 ou 3.")
+        except Exception as e:
+            print(f"Une erreur est survenue : {e}")
 
 
 menu()
